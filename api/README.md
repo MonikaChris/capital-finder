@@ -25,3 +25,5 @@ https://capital-finder-lv6v2v874-monikachris.vercel.app/api/capital_finder?capit
 
 Output: Santiago is the capital of Chile.
 
+If an invalid country/capital is entered, the output is: Invalid Request. Please try again.
+

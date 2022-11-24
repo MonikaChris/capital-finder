@@ -12,17 +12,25 @@ class handler(BaseHTTPRequestHandler):
 
         if "country" in dic:
             url = "https://restcountries.com/v2/name/"
-            r = requests.get(url + dic["country"])
-            data = r.json()
-            capital = data[0]['capital']
-            message = f'The capital of {dic["country"]} is {capital}.'
+
+            try:
+                r = requests.get(url + dic["country"])
+                data = r.json()
+                capital = data[0]['capital']
+                message = f'The capital of {dic["country"]} is {capital}.'
+            except:
+                message = "Invalid Request. Please try again."
 
         if "capital" in dic:
             url = "https://restcountries.com/v2/capital/"
-            r = requests.get(url + dic["capital"])
-            data = r.json()
-            country = data[0]['name']
-            message = f'{dic["capital"]} is the capital of {country}.'
+
+            try:
+                r = requests.get(url + dic["capital"])
+                data = r.json()
+                country = data[0]['name']
+                message = f'{dic["capital"]} is the capital of {country}.'
+            except:
+                message = "Invalid Request. Please try again."
 
         self.send_response(200)
         self.send_header('Content-type', 'text/plain')
